@@ -240,7 +240,7 @@ export default function Squad() {
 
   const updateField = (memberId: string, field: keyof MemberWeekData, value: string) => {
     const next = { ...data };
-    const wd = { ...next[selectedWeek] } || getDefaultWeekData();
+    const wd = next[selectedWeek] ? { ...next[selectedWeek] } : getDefaultWeekData();
     wd.members = { ...wd.members, [memberId]: { ...wd.members[memberId], [field]: value } };
 
     // Auto-sync blockers
